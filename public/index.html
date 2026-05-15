@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IronRoot Gym — Strength Starts Here</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#">Iron<span>Root</span></a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-auth">
+        <div id="auth-loading" class="auth-loading">●●●</div>
+        <button id="login-btn" class="btn-outline" style="display:none" onclick="signInWithGoogle()">Sign in with Google</button>
+        <div id="user-info" style="display:none" class="user-info">
+          <img id="user-avatar" src="" alt="avatar" class="avatar"/>
+          <span id="user-name"></span>
+          <button class="btn-ghost" onclick="signOut()">Sign out</button>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#features" onclick="toggleMenu()">Features</a>
+      <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+      <a href="#faq" onclick="toggleMenu()">FAQ</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">Est. 2024 · Chennai's Finest</div>
+      <h1 class="hero-title">Build the Body<br/><em>You Deserve.</em></h1>
+      <p class="hero-sub">Premium equipment. Expert trainers. A community that pushes you forward. Your transformation starts on day one.</p>
+      <div class="hero-cta">
+        <a href="#pricing" class="btn-primary">View Plans</a>
+        <a href="#features" class="btn-text">Learn more →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>2,400+</strong><span>Active Members</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>18</strong><span>Expert Trainers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><strong>5★</strong><span>Rated on Google</span></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-card">
+        <div class="hero-img-inner">
+          <div class="hero-visual">
+            <div class="dumbell-icon">🏋️</div>
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why IronRoot</span>
+        <h2>Everything You Need<br/><em>to Perform</em></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h3>World-Class Equipment</h3>
+          <p>Over 120 machines and free-weight stations. Regularly serviced, always clean, never crowded.</p>
+        </div>
+        <div class="feature-card featured">
+          <div class="feature-icon">🧠</div>
+          <h3>Expert Coaching</h3>
+          <p>Certified trainers with specializations in strength, fat loss, and functional fitness. One-on-one or group.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🥗</div>
+          <h3>Nutrition Guidance</h3>
+          <p>Custom meal plans and supplement advice aligned with your fitness goal and body type.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Member App</h3>
+          <p>Track workouts, book classes, view trainer notes, and monitor progress all in one place.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Group Classes</h3>
+          <p>HIIT, Yoga, Zumba, Spinning. 30+ weekly sessions designed to keep you motivated.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚿</div>
+          <h3>Premium Facilities</h3>
+          <p>Spacious locker rooms, hot showers, sauna access, and a members-only lounge area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Membership Plans</span>
+        <h2>Simple, Honest<br/><em>Pricing</em></h2>
+        <p class="section-sub">No hidden fees. Cancel anytime. All plans include full gym access.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- 1 Month -->
+        <div class="price-card">
+          <div class="price-duration">1 Month</div>
+          <div class="price-amount"><span class="currency">₹</span>1,499</div>
+          <div class="price-per">per month</div>
+          <ul class="price-perks">
+            <li>✓ Full gym access</li>
+            <li>✓ Group classes</li>
+            <li>✓ Locker room</li>
+            <li>✓ App access</li>
+            <li class="muted">✗ Personal trainer</li>
+            <li class="muted">✗ Nutrition plan</li>
+          </ul>
+          <button class="btn-plan" onclick="handlePayment('basic', 1499, '1 Month')">Get Started</button>
+        </div>
+        <!-- 3 Month (Popular) -->
+        <div class="price-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="price-duration">3 Months</div>
+          <div class="price-amount"><span class="currency">₹</span>3,799</div>
+          <div class="price-per">₹1,267/month · Save 15%</div>
+          <ul class="price-perks">
+            <li>✓ Full gym access</li>
+            <li>✓ Group classes</li>
+            <li>✓ Locker room</li>
+            <li>✓ App access</li>
+            <li>✓ 1 trainer session/month</li>
+            <li class="muted">✗ Nutrition plan</li>
+          </ul>
+          <button class="btn-plan popular-btn" onclick="handlePayment('standard', 3799, '3 Month')">Get Started</button>
+        </div>
+        <!-- 6 Month -->
+        <div class="price-card">
+          <div class="price-duration">6 Months</div>
+          <div class="price-amount"><span class="currency">₹</span>6,999</div>
+          <div class="price-per">₹1,167/month · Save 22%</div>
+          <ul class="price-perks">
+            <li>✓ Full gym access</li>
+            <li>✓ Group classes</li>
+            <li>✓ Locker room</li>
+            <li>✓ App access</li>
+            <li>✓ 2 trainer sessions/month</li>
+            <li>✓ Custom nutrition plan</li>
+          </ul>
+          <button class="btn-plan" onclick="handlePayment('premium', 6999, '6 Month')">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Got Questions?</span>
+        <h2>Frequently Asked<br/><em>Questions</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>What are the gym timings?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">We're open Monday–Saturday from 5:30 AM to 10:30 PM, and Sundays from 7 AM to 8 PM. Our trainers are available from 6 AM daily.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Can I cancel my membership?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Yes, you may cancel at any time. Refunds are available on unused months (after the first 7 days) for 3-month and 6-month plans. Monthly plans are non-refundable once active.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Is there a joining fee?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">No joining fee — ever. What you see in our pricing is exactly what you pay.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Do I need to be fit before joining?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Absolutely not. IronRoot welcomes beginners through advanced athletes. Every new member gets a free onboarding session with a trainer to design their personal plan.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>How does online payment work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Payments are processed securely via Stripe. We accept all major credit and debit cards. You'll receive a confirmation email once your subscription is activated.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>Can I freeze my membership?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">Yes! Members on 3-month or 6-month plans can freeze their membership once per cycle for up to 30 days (e.g., travel, illness). Contact us at least 48 hours in advance.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container contact-wrap">
+      <div class="contact-info">
+        <span class="section-tag">Get in Touch</span>
+        <h2>We'd Love to<br/><em>Hear from You</em></h2>
+        <p>Have questions about plans, trainers, or facilities? Drop us a message and we'll reply within a few hours.</p>
+        <div class="contact-details">
+          <div class="contact-detail"><span>📍</span><span>23 MGR Salai, Anna Nagar, Chennai – 600 040</span></div>
+          <div class="contact-detail"><span>📞</span><span>+91 98765 43210</span></div>
+          <div class="contact-detail"><span>✉️</span><span>hello@ironrootgym.com</span></div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form" onsubmit="submitContact(event)">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="c-name" placeholder="Ravi Kumar" required maxlength="100"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="c-email" placeholder="ravi@example.com" required maxlength="200"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="c-message" rows="5" placeholder="I'd like to know more about..." required maxlength="1000"></textarea>
+        </div>
+        <button type="submit" class="btn-primary full" id="contact-submit">Send Message</button>
+        <div id="contact-msg" class="form-msg"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo footer-logo">Iron<span>Root</span></div>
+      <p>© 2024 IronRoot Gym, Chennai. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
